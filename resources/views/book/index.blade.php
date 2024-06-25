@@ -5,8 +5,14 @@
 @section('content')
 <section class="box-books">
     <div class="box-booksWrapper">
-        <h1>Livros</h1>
+        <div class="box-bookTitle">
+            <h1>Livros</h1>
 
+            @can('manageBooks', Auth::user())
+                <a href="{{route('book.create')}}" class="btn">Criar novo livro</a>
+            @endcan
+
+        </div>
         @if(session('error'))
             <p>{{session('error')}}</p>
         @endif
@@ -15,11 +21,13 @@
             <p>{{session('success')}}</p>
         @endif
 
-        <div class="d-flex flex-row w-100 ms-3">
+        <div class="box-book">
             @foreach ($books as $book)
                 <a href="{{route('book.show', $book->id)}}" class="book-card ms-3">
                     <div class="card">
-                        <div class="card-header" style="background-image: url('{{ asset('storage/recipe_images/'.$book->publications[0]->recipe->photos[0]->name) }}');"></div>
+                        <div class="card-headers"
+                            style="background-image: url('{{ asset('storage/recipe_images/' . $book->publications[0]->recipe->photos[0]->name) }}');">
+                        </div>
                         <div class="card-body">
                             <h3>{{$book->title}}</h3>
                             @if(!$book->published_at)
@@ -33,9 +41,7 @@
             @endforeach
         </div>
 
-        @can('manageBooks', Auth::user())
-            <a href="{{route('book.create')}}" class="btn btn-primary">Criar novo livro</a>
-        @endcan
+
     </div>
 </section>
 @endsection
@@ -58,31 +64,80 @@
         border-radius: 16px;
     }
 
+    .box-bookTitle {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 100px;
+    }
+
+    .box-book {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
     h1 {
         color: #FF9E0B;
         font-size: 36px;
         font-weight: 500;
-        margin-bottom: 20px;
+        letter-spacing: normal;
+        line-height: 120%;
+        padding: 20px 0px 20px 50px;
     }
 
-    .card-header {
-        background-size: cover;
-        background-position: center;
-        height: 100px;
+    h3 {
+        font-size: 1.3rem;
+        display: inline-block;
+        /* Mantém o título na mesma linha */
+        margin-right: 10px;
     }
 
-    .book-card {
-        text-decoration: none;
-        transition: all 0.4s;
-        overflow: hidden;
+    .card {
+        display: flex;
+        border: 1px solid #FF9E0B;
+        border-radius: 16px;
+        /* overflow: hidden; */
+        background-color: #fff;
+        width: 200px;
+        height: 330px;
+        margin-bottom: 60px;
+        transition: all 0.3s ease-in-out;
+        background-color: #FBF7ED;
     }
 
-    .book-card:hover {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.11);
+    .card:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         transform: scale(1.03);
     }
 
+    .card-headers {
+        border-radius: 150px;
+        background-size: cover;
+        background-position: center;
+        height: 150px;
+        width: 150px;
+        border: 1px solid #FF9E0B;
+        margin-top: -50px;
+        margin-left: 25px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-body h3 {
+        font-size: 20px;
+        color: #FF9E0B;
+        margin-bottom: 10px;
+    }
+
+    .card-body p {
+        margin: 5px 0;
+        color: #8E3F1A;
+    }
+
     .btn {
+        height: 50px;
         background-color: #FBF7ED;
         border: 1px solid #FF9E0B;
         border-radius: 8px;
@@ -92,8 +147,7 @@
         text-decoration: none;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-        display: inline-block;
-        margin-top: 20px;
+        margin: 20px 40px;
     }
 
     .btn:hover {
