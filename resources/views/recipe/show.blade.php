@@ -31,11 +31,13 @@
             <h2>Publicada nos livros:</h2>
             @foreach($recipe->publications as $publication)
                 <a href="{{route('book.show', $publication->book_id)}}" class="publication-link">{{$publication->book->title}}</a>
+                <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
             @endforeach
         @elseif($recipe->employee->id == Auth::user()->employee->id)
             <div class="action-buttons">
                 <a class="btn btn-primary" href="{{route('recipe.edit', $recipe->id)}}">Editar receita</a>
                 <a class="btn btn-danger" href="{{route('recipe.delete', $recipe->id)}}">Apagar receita</a>
+                <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
             </div>
         @endif
 
@@ -148,6 +150,12 @@
     .btn-danger:hover {
         background-color: #e41313;
         color: #FBF7ED;
+    }
+
+    @media print{
+        .btn{
+            display: none;
+        }
     }
 </style>
 @endsection
