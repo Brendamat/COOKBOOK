@@ -44,67 +44,70 @@
         </div>
 
         <button class="salvar" type="submit">Salvar</button>
+        </form>
     </div>
-</form>
-
 
     @if($user->role->name == 'chef')
 
-        <h1>Experiencia</h1>
-        @foreach ($user->employee->experiences as $experience)
-
-            <p>{{$experience->restaurant->name}}</p>
-            <p>{{App\Helpers\GlobalHelper::convertDate($experience->start_date)}} -
-                {{$experience->end_date ? App\Helpers\GlobalHelper::convertDate($experience->end_date) : 'Atual'}}
-            </p>
-            <form method="POST" action="{{ route('employee.removeExperience') }}">
-                @csrf
-
-                <input type="hidden" name="id" value="{{$experience->id}}">
-                <input type="hidden" name="restaurant" value="{{$experience->restaurant->id}}">
-
-                <button type="submit">Remover</button>
-            </form
-
-        @endforeach
-
-        <h1>Adicionar experiencia</h1>
-
-        <form method="POST" action="{{ route('employee.addExperience') }}">
-            @csrf
-
-            <input type="hidden" name="employee_id" value="{{$user->employee->id}}">
-
-            <label for="restaurant">Restaurante</label>
-            <select name="restaurant_id" id="restaurant_id">
-            @foreach ($restaurants as $restaurant)
-                <option value="{{$restaurant->id}}">{{$restaurant->name}}</option>
+        <div class="experiencia__container">
+            <h1 class="perfil__title">Experiência</h1>
+            @foreach ($user->employee->experiences as $experience)
+                <div class="experiencia__item">
+                    <p>{{$experience->restaurant->name}}</p>
+                    <p>{{App\Helpers\GlobalHelper::convertDate($experience->start_date)}} -
+                        {{$experience->end_date ? App\Helpers\GlobalHelper::convertDate($experience->end_date) : 'Atual'}}
+                    </p>
+                    <form method="POST" action="{{ route('employee.removeExperience') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$experience->id}}">
+                        <input type="hidden" name="restaurant" value="{{$experience->restaurant->id}}">
+                        <button type="submit" class="btn-remover">Remover</button>
+                    </form>
+                </div>
             @endforeach
-            </select>
 
-            <label for="start_date">Data de admissão</label>
-            <input type="date" name="start_date" id="start_date">
+            <h1 class="perfil__title">Adicionar Experiência</h1>
+            <form method="POST" action="{{ route('employee.addExperience') }}" class="add-experience-form">
+                @csrf
+                <input type="hidden" name="employee_id" value="{{$user->employee->id}}">
 
-            <label for="end_date">Data de demissão</label>
-            <input type="date" name="end_date" id="end_date">
+                <div class="form-group">
+                    <label for="restaurant_id">Restaurante</label>
+                    <select name="restaurant_id" id="restaurant_id" class="form-control">
+                        @foreach ($restaurants as $restaurant)
+                            <option value="{{$restaurant->id}}">{{$restaurant->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-            <label for="current_job">Emprego atual</label>
-            <input type="checkbox" name="current_job" id="current_job">
+                <div class="form-group">
+                    <label for="start_date">Data de admissão</label>
+                    <input type="date" name="start_date" id="start_date" class="form-control">
+                </div>
 
+                <div class="form-group">
+                    <label for="end_date">Data de demissão</label>
+                    <input type="date" name="end_date" id="end_date" class="form-control">
+                </div>
 
-            <button type="submit">Adicionar</button>
+                <div class="form-group">
+                    <label for="current_job">Emprego atual</label>
+                    <input type="checkbox" name="current_job" id="current_job">
+                </div>
+
+                <button type="submit" class="salvar">Adicionar</button>
+            </form>
+        </div>
     @endif
-
-
 @endsection
 
 @section('style')
 <style>
-        main {
+    main {
         background-color: #FBF7ED;
         height: 95%;
     }
-        .perfil__header{
+    .perfil__header{
         color: #FF9E0B;
         font-size: 36px;
         font-weight: 500;
@@ -190,54 +193,81 @@
         min-width: 212px;
         width: 20vw;
     }
+
+    /* Novas classes para a seção de Adicionar Experiência */
+    .experiencia__container {
+        background-color: #fff;
+        border: 1px solid #FBF7ED;
+        border-radius: 12px;
+        padding: 30px;
+        margin: 20px auto;
+        width: 100%;
+    }
+
+    .experiencia__item {
+        margin-bottom: 20px;
+    }
+
+    .btn-remover {
+        background-color: #FBF7ED;
+        border: 1px solid #FF9E0B;
+        border-radius: 8px;
+        color: #FF9E0B;
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .btn-remover:hover {
+        background-color: #FFFFFF;
+    }
+
+    .add-experience-form .form-group {
+        margin-bottom: 15px;
+    }
+
+    .add-experience-form label {
+        color: rgba(0, 0, 0, .4);
+        font-weight: 400;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .add-experience-form .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid rgba(234, 195, 157, .5);
+        border-radius: 4px;
+        font-size: 16px;
+        color: rgba(0, 0, 0, .6);
+    }
+
+    .add-experience-form button.salvar {
+        background-color: #FBF7ED;
+        border: 1px solid #FF9E0B;
+        border-radius: 8px;
+        color: #FF9E0B;
+        font-size: 14px;
+        padding: 8px 16px;
+        margin-top: 10px;
+    }
+
+    .add-experience-form button.salvar:hover {
+        background-color: #FFFFFF;
+    }
 </style>
 @endsection
 
 @section('script')
 <script>
-
     $(document).ready(function() {
         $('#current_job').change(function() {
             if(this.checked) {
                 $('#end_date').prop('disabled', true);
-                $('#end_date').prop('value', null);
-
+                $('#end_date').val('');
             } else {
                 $('#end_date').prop('disabled', false);
             }
         });
     });
-
 </script>
 @endsection
-
-
-{{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout> --}}
