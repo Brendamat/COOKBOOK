@@ -71,7 +71,7 @@
     }
     main {
         background-color: #FBF7ED;
-        height: 95%;
+        height: 100vh;
     }
     .perfil__header h1 {
         color: #FF9E0B;
@@ -85,6 +85,7 @@
         display: flex;
         overflow-x: hidden;
         width: 100%;
+        padding: 20px;
     }
     .perfil__container {
         background-color: #fff;
@@ -95,6 +96,7 @@
         margin: 0 auto;
         padding: 30px 20px;
         width: 100%;
+        border: .9px solid #FF9E0B;
     }
     .perfil__col {
         border-right: 1px solid rgba(234, 195, 157, .5);

@@ -163,7 +163,7 @@
                 <div>
                     <a href="{{route('book.index')}}"><li>Livros</li></a>
                     <a href="{{route('recipe.index')}}"><li>Receitas</li></a>
-                    <a href="{{route('tasting.index')}}"><li>Desgustações</li></a>
+                    <a href="{{route('tasting.index')}}"><li>Degustações</li></a>
 
                     @can('manageCategories', Auth::user())
                         <a href="{{ route('category.index') }}"><li>Categorias</li></a>

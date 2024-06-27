@@ -146,6 +146,12 @@ input:focus-visible {
     font-size: 1.2rem;
 }
 
+.bt4r:hover {
+    color: var(--firt-color);
+    background-color: white !important;
+    border: 2px solid var(--firt-color);
+}
+
 .box-btn { 
     flex-direction: column-reverse;
 }
