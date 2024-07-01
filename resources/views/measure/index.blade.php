@@ -9,18 +9,20 @@
         <p>{{session('error')}}</p>
     @endif
 
-    @foreach ($measures as $measure)
-        <div class="d-flex flex-row listagem">
-            <h3>{{ $measure->name }}</h3>
+    <div class="grid-div">
+        @foreach ($measures as $measure)
+            <div class="d-flex flex-row listagem">
+                <h3>{{ $measure->name }}</h3>
 
-            <form action="{{route('measure.delete')}}" method="POST" class="formulario">
-                @csrf
-                <input type="hidden" name="id" value="{{$measure->id}}">
-                <button type="submit" class="salvar">Deletar</button>
-            </form>
+                <form action="{{route('measure.delete')}}" method="POST" class="formulario">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$measure->id}}">
+                    <button type="submit" class="deletar">Deletar</button>
+                </form>
 
-        </div>
-    @endforeach
+            </div>
+        @endforeach
+    </div>
 
     <h1 class="titulo__header">Cadastrar medida</h1>
 
@@ -34,6 +36,11 @@
 
 @section('style')
 <style>
+    .grid-div {
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+        gap: 10px;
+    }
     .salvar{
         background-color: #FBF7ED;
         border: 1px solid #FF9E0B;
@@ -42,7 +49,19 @@
         font-size: 14px;
         padding: 3px 30px;
         display: block;
+        width: 50%;
     }
+
+    .deletar {
+        background-color: #FBF7ED;
+        border: 1px solid #e41313;
+        border-radius: 8px;
+        color: #e41313;
+        font-size: 14px;
+        padding: 3px 30px;
+        display: block;
+    }
+
     .titulo__header{
         color: #FF9E0B;
         font-size: 36px;
