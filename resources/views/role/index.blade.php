@@ -22,7 +22,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <p>{{ $role->name }}</p>
+                                <p style="margin-bottom: 0;">{{ $role->name }}</p>
                             </td>
                             <td>
                                 <p class="{{ $role->active ? 'ativo' : 'inativo' }}">{{$role->active ? 'Ativo' : 'Inativo'}}</p>
@@ -110,7 +110,8 @@
         border-radius: 8px;
         color: #FF9E0B;
         font-size: 14px;
-        padding: 10px 16px;
+        padding: 6px 12px;
+        margin-bottom: 0;
     }
     .deletar{
         background-color: #fbeded;
@@ -118,7 +119,8 @@
         border-radius: 8px;
         color: #e41313;
         font-size: 14px;
-        padding: 10px 16px;
+        padding: 6px 12px;
+        margin-bottom: 0;
     }
     .box-cargos {
         padding: 120px 100px;
@@ -147,6 +149,7 @@
     .box-cargosWrapper td {
         padding: 10px;
         border-bottom: 1px solid #FF9E0B;
+        margin-bottom: 0;
     }
     .box-cargos__acoes {
         display: flex;
@@ -162,6 +165,7 @@
         border-radius: 10px;
         text-align: center;
         width: 80%;
+        margin-bottom: 0;
     }
 
     .inativo {
@@ -170,6 +174,7 @@
         border-radius: 10px;
         text-align: center;
         width: 80%;
+        margin-bottom: 0;
     }
 </style>
 @endsection

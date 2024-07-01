@@ -70,7 +70,7 @@
 @section('style')
 <style>
     main {
-        background-color: #FBF7ED;
+        /* background-color: #FBF7ED; */
         height: 95%;
     }
 
@@ -80,7 +80,7 @@
         font-weight: 500;
         letter-spacing: normal;
         line-height: 120%;
-        padding: 20px 0px 20px 50px;
+        padding: 20px 0px 20px 30px;
     }
 
     .salvar,
@@ -109,7 +109,7 @@
         font-weight: 400;
         padding-bottom: 5px;
         display: block;
-        margin-left: 10%;
+        margin-left: 3%;
     }
 
     .form-group input,
@@ -125,19 +125,19 @@
         padding: 0 10px;
         transition: border .2s ease-in-out;
         width: 50%;
-        margin-left: 10%;
+        margin-left: 3%;
         margin-bottom: 30px;
     }
 
     .form-buttons {
         display: flex;
-        justify-content: space-between;
-        margin: 20px 10%;
+        gap: 40px;
+        margin: 20px 3%;
     }
 
     .form-buttons button,
     .form-buttons a {
-        width: 48%;
+        width: 25%;
         text-align: center;
     }
 </style>

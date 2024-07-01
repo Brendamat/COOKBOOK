@@ -48,7 +48,7 @@
 <style>
     main {
         background-color: #FBF7ED;
-        height: 95%;
+        height: 100vh;
     }
     .box-usuarios {
         padding: 120px 100px;

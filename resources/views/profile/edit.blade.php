@@ -141,6 +141,7 @@
         align-items: center;
         justify-content: space-between;
         row-gap: 1rem;
+        padding-bottom: 30px;
     }
     .salvar{
         background-color: #FBF7ED;
