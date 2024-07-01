@@ -20,7 +20,7 @@
         </div>
 
         @if(session('error'))
-            <p>{{session('error')}}</p>
+            <p class="text-danger">{{session('error')}}</p>
         @endif
         <table>
             <thead>
@@ -146,8 +146,13 @@
     h3{
         color: rgba(0, 0, 0, .4);
         font-weight: 400;
-        padding-bottom: 5px;
+        margin-bottom: 0;
         font-size: 20px;
+    }
+
+    .text-danger {
+        color: #e41313;
+        font-size: 14px;
     }
 </style>
 @endsection
