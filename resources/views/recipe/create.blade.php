@@ -86,7 +86,7 @@
     }
 
     .box-recipe_create {
-        padding: 120px 100px;
+        padding: 60px 80px;
     }
 
     .box-recipeWrapper {
@@ -168,6 +168,11 @@
         font-weight: 500;
         letter-spacing: normal;
         line-height: 120%;
+    }
+
+    .text-danger {
+        font-size: 14px;
+        color: #e41313;
     }
 </style>
 @endsection
