@@ -88,7 +88,7 @@ class IngredientController extends Controller
     {
         $ingredient = Ingredient::find($request->id);
 
-        if($ingredient->ingredientRecipes->count() > 0) {
+        if($ingredient->recipes->count() > 0) {
             return redirect()->route('ingredient.index')->with('error', 'O ingrediente "'.$ingredient->name.'" não pode ser deletado porque está sendo utilizado em uma receita!');
         }
 
