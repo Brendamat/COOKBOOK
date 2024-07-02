@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Models\Tasting;
+use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -30,7 +31,7 @@ class DashboardController extends Controller
 
         $recentRecipes = Recipe::orderBy('created_at', 'desc')->take(5)->get();
         $recipesCount = Recipe::count();
-        $booksCount = Recipe::distinct()->count('book_id');
+        $booksCount = Book::count();
 
         $tastingsCount = Tasting::count();
         $recentTastings = Tasting::orderBy('created_at', 'desc')->take(5)->get();
