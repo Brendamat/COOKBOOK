@@ -36,8 +36,11 @@ class DashboardController extends Controller
         $tastingsCount = Tasting::count();
         $recentTastings = Tasting::orderBy('created_at', 'desc')->take(5)->get();
 
-        $userBooks = Book::where('employee_id', Auth::user()->employee->id)->get();
-        $userRecipes = Recipe::where('employee_id', Auth::user()->employee->id)->get();
+        if(isset(Auth::user()->employee) && (Auth::user()->role->name == 'chef' || Auth::user()->role->name == 'admin')){
+            $userRecipes = Recipe::where('employee_id', Auth::user()->employee->id)->count();
+        } else if (isset(Auth::user()->employee) && (Auth::user()->role->name == 'taster' || Auth::user()->role->name == 'admin')){
+            $userBooks = Book::where('employee_id', Auth::user()->employee->id)->count();
+        }
 
         return view('home',
             compact('userName', 'userRole', 'adminCount', 'userCount', 'chefCount', 'hrCount', 'tasterCount', 'publisherCount', 'usersCount', 'recentRecipes', 'recipesCount', 'booksCount', 'tastingsCount', 'recentTastings', 'userBooks', 'userRecipes')
