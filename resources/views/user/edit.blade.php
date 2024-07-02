@@ -3,7 +3,7 @@
 @section('title', 'Editar Usuário')
 
 @section('content')
-<h1 class="editar_usuario__header">Editar Usuário</h1>
+<h1 class="editar_usuario__header" style="padding-left: 50px;">Editar Usuário</h1>
 
 @if(session('error'))
     <p class="text-danger">{{session('error')}}</p>
@@ -32,7 +32,7 @@
 
     <h1 class="editar_usuario__header">Dados de funcionário</h1>
     @if(!$user->employee()->exists())
-        <p class="text-danger">O usuário não possui perfil de funcionário!</p>
+        <p class="text-danger" style="padding-left: 30px;">O usuário não possui perfil de funcionário!</p>
     @endif
     @method('PATCH')
     <div class="form-group">
