@@ -37,8 +37,8 @@ class DashboardController extends Controller
         $recentTastings = Tasting::orderBy('created_at', 'desc')->take(5)->get();
 
 
-        $userRecipes = 0;
-        $userBooks = 0;
+        $userRecipesCount = 0;
+        $userBooksCount = 0;
         if(isset(Auth::user()->employee) && (Auth::user()->role->name == 'chef' || Auth::user()->role->name == 'admin')){
             $userRecipesCount = Recipe::where('employee_id', Auth::user()->employee->id)->count();
         } else if (isset(Auth::user()->employee) && (Auth::user()->role->name == 'publisher' || Auth::user()->role->name == 'admin')){
