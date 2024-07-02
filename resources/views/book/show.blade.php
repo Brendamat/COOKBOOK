@@ -5,7 +5,7 @@
 @section('content')
 <section class="box-book_detail">
     <div class="box-bookWrapper">
-        <h1>Detalhes do livro</h1>
+        <h1 style="text-align: center;">Detalhes do livro - {{$book->title}}</h1>
 
         @if(session('error'))
             <p>{{session('error')}}</p>
@@ -18,7 +18,7 @@
         <div class="book-detail-header">
             <h1>{{$book->name}}
                 @if(!$book->published_at)
-                    <span class="badge bg-danger">Não publicado</span>
+                    <span class="badge bg-danger" style="font-size: 14px;">Não publicado</span>
                 @endif
             </h1>
             <p>Publicado por {{$book->employee->user->name}}</p>
@@ -57,7 +57,15 @@
 <style>
     main {
         background-color: #FBF7ED;
-        height: 100vh;
+        /* height: 100vh; */
+    }
+
+    ul { 
+        list-style: none;
+        display: grid;
+        align-items: center;
+        padding-bottom: 30px;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .box-book_detail {
