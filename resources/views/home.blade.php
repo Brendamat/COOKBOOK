@@ -13,7 +13,7 @@
                 <a href="{{route('book.index')}}">
                     <div class="box-cards__infos">
                         <h2 class="box-cards__infosTitle">Livros Cadastrados</h2>
-                        <strong class="box-cards__infosStrong">{{ $recipesCount }}</strong>
+                        <strong class="box-cards__infosStrong">{{ $booksCount }}</strong>
                     </div>
                 </a>
             </div>
@@ -32,7 +32,7 @@
                     <a href="{{route('recipe.index')}}">
                         <div class="box-cards__infos">
                             <h2 class="box-cards__infosTitle">Suas Receitas Cadastradas</h2>
-                            <strong class="box-cards__infosStrong">{{ $recipesCount }}</strong>
+                            <strong class="box-cards__infosStrong">{{ $useRecipesCount }}</strong>
                         </div>
                     </a>
                 </div>
@@ -51,27 +51,27 @@
                                     <p class="list-users__title">ativos - por cargos</p>
                                     <ul>
                                         <li>
-                                            <p class="list-users__text">{{ $recipesCount }}</p>
+                                            <p class="list-users__text">{{ $adminCount }}</p>
                                             <strong class="list-users__strong">admin</strong>
                                         </li>
                                         <li>
-                                            <p class="list-users__text">{{ $recipesCount }}</p>
+                                            <p class="list-users__text">{{ $userCount }}</p>
                                             <strong class="list-users__strong">usuários</strong>
                                         </li>
                                         <li>
-                                            <p class="list-users__text">{{ $recipesCount }}</p>
+                                            <p class="list-users__text">{{ $chefCount }}</p>
                                             <strong class="list-users__strong">chef</strong>
                                         </li>
                                         <li>
-                                            <p class="list-users__text">{{ $recipesCount }}</p>
+                                            <p class="list-users__text">{{ $hrCount }}</p>
                                             <strong class="list-users__strong">rh</strong>
                                         </li>
                                         <li>
-                                            <p class="list-users__text">{{ $recipesCount }}</p>
+                                            <p class="list-users__text">{{ $tasterCount }}</p>
                                             <strong class="list-users__strong">degustador</strong>
                                         </li>
                                         <li>
-                                            <p class="list-users__text">{{ $recipesCount }}</p>
+                                            <p class="list-users__text">{{ $publisherCount }}</p>
                                             <strong class="list-users__strong">publicador</strong>
                                         </li>
                                     </ul>

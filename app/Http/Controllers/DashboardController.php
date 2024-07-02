@@ -40,13 +40,13 @@ class DashboardController extends Controller
         $userRecipes = 0;
         $userBooks = 0;
         if(isset(Auth::user()->employee) && (Auth::user()->role->name == 'chef' || Auth::user()->role->name == 'admin')){
-            $userRecipes = Recipe::where('employee_id', Auth::user()->employee->id)->count();
+            $userRecipesCount = Recipe::where('employee_id', Auth::user()->employee->id)->count();
         } else if (isset(Auth::user()->employee) && (Auth::user()->role->name == 'publisher' || Auth::user()->role->name == 'admin')){
-            $userBooks = Book::where('employee_id', Auth::user()->employee->id)->count();
+            $userBooksCount = Book::where('employee_id', Auth::user()->employee->id)->count();
         }
 
         return view('home',
-            compact('userName', 'userRole', 'adminCount', 'userCount', 'chefCount', 'hrCount', 'tasterCount', 'publisherCount', 'usersCount', 'recentRecipes', 'recipesCount', 'booksCount', 'tastingsCount', 'recentTastings', 'userBooks', 'userRecipes')
+            compact('userName', 'userRole', 'adminCount', 'userCount', 'chefCount', 'hrCount', 'tasterCount', 'publisherCount', 'usersCount', 'recentRecipes', 'recipesCount', 'booksCount', 'tastingsCount', 'recentTastings', 'userBooksCount', 'userRecipesCount')
         );
     }
 }
