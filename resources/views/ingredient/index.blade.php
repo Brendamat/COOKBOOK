@@ -13,26 +13,28 @@
         <p class="ingrediente__success">{{session('success')}}</p>
     @endif
 
-    @foreach ($ingredients as $ingredient)
-        <div class="d-flex">
+    <div class="d-grid" style="grid-template-columns: 1fr 1fr;">
+        @foreach ($ingredients as $ingredient)
+            <div class="">
 
-            <form action="{{route('ingredient.update')}}" method="POST" class="formulario atualizar">
-                @csrf
-                <input type="hidden" name="id" value="{{$ingredient->id}}">
-                <input type="text" name="name" id="name" class="form-control" value="{{$ingredient->name}}">
-                <input type="text" name="description" id="description" class="form-control" value="{{$ingredient->description}}"
-                    placeholder="{{$ingredient->description ?? 'Descrição do ingrediente'}}">
-                <input type="submit" value="Salvar" class="salvar">
-            </form>
+                <form action="{{route('ingredient.update')}}" method="POST" class="formulario atualizar">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$ingredient->id}}">
+                    <input type="text" name="name" id="name" class="form-control" value="{{$ingredient->name}}">
+                    <input type="text" name="description" id="description" class="form-control" value="{{$ingredient->description}}"
+                        placeholder="{{$ingredient->description ?? 'Descrição do ingrediente'}}">
+                    <input type="submit" value="Salvar" class="salvar">
+                </form>
 
-            <form action="{{route('ingredient.delete')}}" method="POST" class="formulario atualizar">
-                @csrf
-                <input type="hidden" name="id" value="{{$ingredient->id}}">
-                <button type="submit" class="salvar">Deletar</button>
-            </form>
+                <form action="{{route('ingredient.delete')}}" method="POST" class="formulario atualizar">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$ingredient->id}}">
+                    <button type="submit" class="salvar" style="width: 80%;">Deletar</button>
+                </form>
 
-        </div>
-    @endforeach
+            </div>
+        @endforeach
+    </div>
 
     <h1 class="titulo__header">Cadastrar ingrediente</h1>
 
@@ -82,7 +84,7 @@
         font-weight: 400;
         height: 48px;
         line-height: 48px;
-        padding: 20px 0px 20px 50px;
+        padding: 20px 0px 0px 50px;
         transition: border .2s ease-in-out;
         width: 100%;
     }
@@ -92,7 +94,7 @@
         font-weight: 400;
         padding-bottom: 5px;
         border-radius: 4px;
-        width: 50%;
+        width: 80%;
         margin-bottom: 15px;
         border: 1px solid rgba(234, 195, 157, .5);
     }
