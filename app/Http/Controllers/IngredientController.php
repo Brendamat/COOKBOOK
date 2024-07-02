@@ -35,11 +35,9 @@ class IngredientController extends Controller
             'description'=> 'nullable|string|max:255'
         ]);
 
-        $ingredients = Ingredient::all();
-        foreach($ingredients as $ingredient) {
-            if($ingredient->name == $request->name) {
-                return redirect()->route('ingredient.index')->with('error', 'O ingrediente "'.$request->name.'" já foi cadastrado!');
-            }
+        $ingredientAlreadyExists = Ingredient::where('name', 'like', $request->name)->exists();
+        if($ingredientAlreadyExists){
+            return redirect()->route('ingredient.index')->with('error','O ingrediente "'.$request->name.'" já foi cadastrado!');
         }
 
         Ingredient::create($data);

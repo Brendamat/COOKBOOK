@@ -51,6 +51,11 @@ class BookController extends Controller
             return redirect()->route('book.create')->with('error','ISBN já cadastrado!');
         }
 
+        $nameAlreadyExists = Book::where('title', 'like', $request->title)->exists();
+        if($nameAlreadyExists){
+            return redirect()->route('book.create')->with('error','Já existe um livro cadastrado com esse nome!');
+        }
+
         $book = Book::create([
             'title'=> $request->title,
             'employee_id' => $request->employee_id,
