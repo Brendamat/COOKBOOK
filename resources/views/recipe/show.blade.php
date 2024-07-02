@@ -47,7 +47,27 @@
 
         @isset($rating)
             <h2>Avaliação média</h2>
-            <p>{{$rating}}</p>
+            @if($rating == 1)
+                <i class="ri-star-fill"></i>
+            @elseif($rating == 2)
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+            @elseif($rating == 3)
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+            @elseif($rating == 4)
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+            @elseif($rating == 5)
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+            @endif
         @endisset
 
         
@@ -78,7 +98,7 @@
         color: #FF9E0B;
         font-weight: 500;
         margin-bottom: 20px;
-        font-size: 28px;
+        font-size: 25px;
         margin-top: 20px;
     }
 
@@ -119,7 +139,9 @@
     .publication-link {
         display: inline-block;
         margin-right: 10px;
-        color: #FF9E0B;
+        color: #8E3F1A;
+        font-weight: 600;
+        font-size: 28px;
         text-decoration: none;
         transition: color 0.3s;
     }
@@ -167,6 +189,8 @@
             display: none;
         }
     }
+
+    .ri-star-fill { color: #e4e443;}
 </style>
 @endsection
 
