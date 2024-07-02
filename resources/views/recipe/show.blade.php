@@ -5,12 +5,12 @@
 @section('content')
 <section class="box-recipe_details">
     <div class="box-recipeWrapper">
-        <h1>Detalhes da receita</h1>
+        <!-- <h1>Detalhes da receita</h1> -->
 
         <h2 class="recipe-title">
             {{$recipe->name}}
             @if(!$recipe->published)
-                <span class="badge bg-success">inédita</span>
+                <span class="badge bg-success" style="font-size: 14px;">inédita</span>
             @endif
         </h2>
 
@@ -18,7 +18,7 @@
             <img src="{{ asset('storage/recipe_images/'.$recipe->photos[0]->name) }}" alt="Imagem da receita">
         </div>
 
-        <p>Criada por {{$recipe->employee->user->name}}</p>
+        <p style="text-align: end; font-size: 14px;">Criada por {{$recipe->employee->user->name}}</p>
 
         <h2>Ingredientes</h2>
         <ul class="ingredient-list">
@@ -40,6 +40,7 @@
                 <div class="action-buttons">
                     <a class="btn btn-primary" href="{{route('recipe.edit', $recipe->id)}}">Editar receita</a>
                     <a class="btn btn-danger" href="{{route('recipe.delete', $recipe->id)}}">Apagar receita</a>
+                    <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
                 </div>
                 @endif
         @endif
@@ -49,7 +50,7 @@
             <p>{{$rating}}</p>
         @endisset
 
-        <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
+        
 
     </div>
 </section>
@@ -59,7 +60,7 @@
 <style>
     main {
         background-color: #FBF7ED;
-        height: 100vh;
+        /* height: 100vh; */
     }
 
     .box-recipe_details {
@@ -77,6 +78,8 @@
         color: #FF9E0B;
         font-weight: 500;
         margin-bottom: 20px;
+        font-size: 28px;
+        margin-top: 20px;
     }
 
     .recipe-title {
@@ -84,6 +87,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        text-transform: uppercase;
     }
 
     .recipe-image img {
