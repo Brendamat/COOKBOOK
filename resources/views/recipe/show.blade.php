@@ -156,7 +156,7 @@
     }
 
     @media print{
-        .btn{
+        .btn, header{
             display: none;
         }
     }
