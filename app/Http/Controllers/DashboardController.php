@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function index()
     {
         $userName = Auth::user()->name;
-        $useRole = Auth::user()->role->name;
+        $userRole = Auth::user()->role->name;
 
         $adminCount = User::where('role_id', 1)->count();
         $userCount = User::where('role_id', 2)->count();
