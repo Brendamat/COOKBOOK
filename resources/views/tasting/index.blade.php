@@ -5,9 +5,16 @@
 @section('content')
     <h1 class="titulo__header">Degustações</h1>
 
-    <form action="{{ route('tasting.index') }}" class="form-filtrar">
-        <input type="text" name="filter" placeholder="Filtrar degustações" class="input-filtrar">
-    </form>
+    <div>
+        <form action="{{ route('tasting.index') }}" class="form-filtrar">
+            <i class="ri-search-line"></i>
+            <input type="text" name="filter" placeholder="Filtrar degustações" class="input-filtrar">
+        </form>
+
+        @if (Auth::user()->employee && (Auth::user()->role->name == 'taster' || Auth::user()->role->name == 'admin'))
+            <a href="{{ route('tasting.create') }}" class="btn btn-primary salvar">Nova degustação</a>
+        @endif
+    </div>
 
     <ul class="lista-degustacoes">
         @foreach ($tastings as $tasting)
@@ -21,10 +28,6 @@
             </li>
         @endforeach
     </ul>
-
-    @if (Auth::user()->employee && (Auth::user()->role->name == 'taster' || Auth::user()->role->name == 'admin'))
-        <a href="{{ route('tasting.create') }}" class="btn btn-primary salvar">Nova degustação</a>
-    @endif
 @endsection
 
 @section('style')
@@ -39,7 +42,7 @@
     }
 
     .form-filtrar {
-        padding-left: 50px; /* Adicionando um espaçamento à esquerda para o formulário de filtro */
+        padding-left: 30px; /* Adicionando um espaçamento à esquerda para o formulário de filtro */
         margin-bottom: 20px; /* Espaçamento inferior para separar os itens */
     }
 
@@ -58,7 +61,7 @@
 
     .item-degustacao {
         margin-bottom: 15px;
-        padding: 10px;
+        padding: 10px 50px;
         background-color: #fff;
         border-radius: 4px;
         border: 1px solid rgba(234, 195, 157, 0.5);
@@ -99,6 +102,9 @@
         background-color: #FF9E0B;
         border-color: #FF9E0B;
         color: #FBF7ED;
+        margin: 0px 50px 30px;
+        padding: 10px;
+        width: 29%;
     }
 
     .btn-primary:hover {
@@ -133,6 +139,12 @@
         color: rgba(0, 0, 0, 0.4);
         font-weight: 400;
         padding-bottom: 5px;
+    }
+
+    .ri-search-line {
+        position: relative;
+        left: 280px;
+        color: rgba(0, 0, 0, 0.4);
     }
 </style>
 @endsection
