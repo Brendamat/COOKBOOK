@@ -12,6 +12,8 @@ use App\Http\Controllers\MeasureController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\TastingController;
+use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +30,7 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
-Route::get('/dashboard', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['hasRole:admin,hr', 'auth'])->prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
