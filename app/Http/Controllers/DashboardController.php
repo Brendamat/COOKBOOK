@@ -38,8 +38,11 @@ class DashboardController extends Controller
 
         if(isset(Auth::user()->employee) && (Auth::user()->role->name == 'chef' || Auth::user()->role->name == 'admin')){
             $userRecipes = Recipe::where('employee_id', Auth::user()->employee->id)->count();
-        } else if (isset(Auth::user()->employee) && (Auth::user()->role->name == 'taster' || Auth::user()->role->name == 'admin')){
+        } else if (isset(Auth::user()->employee) && (Auth::user()->role->name == 'publisher' || Auth::user()->role->name == 'admin')){
             $userBooks = Book::where('employee_id', Auth::user()->employee->id)->count();
+        } else {
+            $userRecipes = 0;
+            $userBooks = 0;
         }
 
         return view('home',
