@@ -39,7 +39,7 @@ class RecipeController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp',
             'ingredient_ids' => 'required|array',
             'ingredient_ids.*' => 'required|integer',
             'employee_id' => 'required|integer',
