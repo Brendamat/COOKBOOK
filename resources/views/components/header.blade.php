@@ -203,7 +203,9 @@
         </div>
     </nav>
     <div>
-        <img src="{{ asset('logo-header.png') }}" alt="Logo" width="150" style="margin-left: 180px;">
+        <a href="{{ route('dashboard') }}">
+            <img src="{{ asset('logo-header.png') }}" alt="Logo" width="150" style="margin-left: 180px;">
+        </a>
     </div>
     <div class="search-container">
         <i class="ri-search-line search-icon"></i>

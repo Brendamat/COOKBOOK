@@ -87,7 +87,7 @@
 <style>
     main {
         background-color: #FBF7ED;
-        height: 100vh;
+        /* height: 100vh; */
     }
 
     .box-recipe_create {

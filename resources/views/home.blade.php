@@ -39,7 +39,7 @@
             @endif
         </section>
 
-        @if($userRole == 'admin')
+        @if($userRole == 'admin' || $userRole == 'hr')
             <section class="section-users">
                 <div class="section-users__cards">
                     <a href="{{ route('user.index') }}">
@@ -83,8 +83,8 @@
             </section>
         @endif
 
-        @if($userRole == 'user')
-            <section class="section-users">
+        @if($userRole == 'user' || $userRole == 'hr' || $userRole == 'taster' || $userRole == 'publisher')
+            <section class="section-users" style="padding-bottom: 30px;">
                 <div class="section-users__cards">
                     <a href="">
                         <div class="box-cardsUser__infos">

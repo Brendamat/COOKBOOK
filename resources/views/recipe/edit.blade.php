@@ -115,11 +115,11 @@
 <style>
     main {
         background-color: #FBF7ED;
-        height: 100vh;
+        /* height: 100vh; */
     }
 
     .box-recipe_edit {
-        padding: 120px 100px;
+        padding: 60px 80px;
     }
 
     .box-recipeWrapper {
