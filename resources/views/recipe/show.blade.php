@@ -27,6 +27,9 @@
             @endforeach
         </ul>
 
+        <h2>Modo de preparo</h2>
+        <p>{{$recipe->description}}</p>
+
         @if($recipe->published)
             <h2>Publicada nos livros:</h2>
             @foreach($recipe->publications as $publication)

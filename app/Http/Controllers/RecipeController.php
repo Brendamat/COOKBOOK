@@ -49,6 +49,7 @@ class RecipeController extends Controller
             'quantities.*' => 'required|numeric',
             'measure_ids' => 'required|array',
             'measure_ids.*' => 'required|integer',
+            'description' => 'required|string',
         ]);
 
         $alreadyExists = Recipe::where('name', $request->name)->where('employee_id', $request->employee_id)->first();
@@ -61,6 +62,7 @@ class RecipeController extends Controller
             'employee_id' => $request->employee_id,
             'portions' => $request->portions,
             'category_id' => $request->category_id,
+            'description' => $request->description,
         ]);
 
         $imageName = $request->name.'_'.time().'.'.$request->image->extension();
@@ -126,12 +128,14 @@ class RecipeController extends Controller
             'ingredient_ids.*' => 'required|integer',
             'portions' => 'required',
             'category_id' => 'required|integer',
+            'description' => 'required|string',
         ]);
 
         $recipe = Recipe::find($request->recipe_id);
         $recipe->name = $request->name;
         $recipe->portions = $request->portions;
         $recipe->category_id = $request->category_id;
+        $recipe->description = $request->description;
         $recipe->save();
 
         if ($request->image) {

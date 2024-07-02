@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('portions');
             $table->foreignId('category_id')->constrained();
             $table->boolean('published')->default(false);
+            $table->text('description');
             $table->timestamps();
         });
     }

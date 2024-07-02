@@ -97,6 +97,11 @@
                 </template>
             </div>
 
+            <div class="form-group">
+                <label for="description">Modo de preparo</label>
+                <textarea name="description" id="description" class="form-control" required>{{$recipe->description}}</textarea>
+            </div>
+
             <input class="btn btn-success mt-4" type="submit" value="Editar">
         </form>
         @else
