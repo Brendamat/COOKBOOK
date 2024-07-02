@@ -42,7 +42,6 @@
             @if($book->published_at)
                 <h2>Publicado em:</h2>
                 <p>{{ \Carbon\Carbon::parse($book->published_at)->format('d/m/Y') }}</p>
-                <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
             @elseif($book->employee->id == Auth::user()->employee->id)
                 <a href="{{route('book.publish', $book->id)}}" class="btn btn-success">Publicar</a>
                 <a href="{{route('book.edit', $book->id)}}" class="btn btn-primary">Editar</a>
@@ -152,13 +151,6 @@
         font-size: 14px;
         padding: 10px 16px;
     }
-
-    @media print{
-        .btn, header{
-            display: none;
-        }
-    }
-
 </style>
 @endsection
 
