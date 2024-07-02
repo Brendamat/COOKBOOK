@@ -65,7 +65,7 @@
     }
 
     .box-book_create {
-        padding: 120px 100px;
+        padding: 60px 80px;
     }
 
     .box-bookWrapper {
@@ -128,6 +128,11 @@
     .btn-secondary:hover {
         background-color: #FBF7ED;
         color: #FF9E0B;
+    }
+
+    .text-danger {
+        font-size: 14px;
+        color: #e41313;
     }
 </style>
 @endsection

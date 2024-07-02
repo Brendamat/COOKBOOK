@@ -14,11 +14,11 @@
 
         </div>
         @if(session('error'))
-            <p>{{session('error')}}</p>
+            <p class="text-danger">{{session('error')}}</p>
         @endif
 
         @if(session('success'))
-            <p>{{session('success')}}</p>
+            <p class="text-success">{{session('success')}}</p>
         @endif
 
         <div class="box-book">
@@ -54,7 +54,7 @@
     }
 
     .box-books {
-        padding: 120px 100px;
+        padding: 70px 90px;
     }
 
     .box-booksWrapper {
@@ -67,13 +67,14 @@
     .box-bookTitle {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 100px;
+        /* margin-bottom: 100px; */
     }
 
     .box-book {
         display: flex;
         flex-wrap: wrap;
         gap: 50px;
+        margin-top: 70px;
     }
 
     h1 {
@@ -82,7 +83,7 @@
         font-weight: 500;
         letter-spacing: normal;
         line-height: 120%;
-        padding: 20px 0px 20px 50px;
+        padding: 20px 0px 20px 0px;
     }
 
     h3 {
@@ -178,6 +179,11 @@
 
     .bg-warning {
         background-color: #ffed4a;
+    }
+
+    .text-danger {
+        font-size: 14px;
+        color: #e41313;
     }
 </style>
 @endsection
