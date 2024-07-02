@@ -47,6 +47,7 @@
                 <a href="{{route('book.edit', $book->id)}}" class="btn btn-primary">Editar</a>
                 <a href="{{route('book.delete', $book->id)}}" class="btn btn-danger">Excluir</a>
             @endif
+            <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
         </div>
     </div>
 </section>

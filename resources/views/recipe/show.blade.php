@@ -34,20 +34,23 @@
             <h2>Publicada nos livros:</h2>
             @foreach($recipe->publications as $publication)
                 <a href="{{route('book.show', $publication->book_id)}}" class="publication-link">{{$publication->book->title}}</a>
-                <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
             @endforeach
-        @elseif($recipe->employee->id == Auth::user()->employee->id)
-            <div class="action-buttons">
-                <a class="btn btn-primary" href="{{route('recipe.edit', $recipe->id)}}">Editar receita</a>
-                <a class="btn btn-danger" href="{{route('recipe.delete', $recipe->id)}}">Apagar receita</a>
-                <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
-            </div>
+        @elseif(isset(Auth::user()->employee))
+            @if($recipe->employee->id == Auth::user()->employee->id)
+                <div class="action-buttons">
+                    <a class="btn btn-primary" href="{{route('recipe.edit', $recipe->id)}}">Editar receita</a>
+                    <a class="btn btn-danger" href="{{route('recipe.delete', $recipe->id)}}">Apagar receita</a>
+                </div>
+                @endif
         @endif
 
         @isset($rating)
             <h2>Avaliação média</h2>
             <p>{{$rating}}</p>
         @endisset
+
+        <a class="btn btn-primary" onclick="window.print()">Gerar PDF</a>
+
     </div>
 </section>
 @endsection
